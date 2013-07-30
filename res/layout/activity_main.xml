@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+    <ViewFlipper android:id="@+id/details" 
+        android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" 
+		android:persistentDrawingCache="animation" 
+		android:flipInterval="1000" 
+		> 
+		
+        <RelativeLayout 
+			android:orientation="vertical" 
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="31dp"
+                android:text="Start" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
+                android:text="Connect" />
+
+    	</RelativeLayout>
+
+    	<RelativeLayout
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content" >
+
+    	    <ImageButton
+    	        android:id="@+id/play"
+    	        android:layout_width="wrap_content"
+    	        android:layout_height="wrap_content"
+    	        android:layout_alignParentTop="true"
+    	        android:layout_marginRight="32dp"
+    	        android:layout_marginTop="16dp"
+    	        android:layout_toLeftOf="@+id/ib"
+    	        android:background="#00000000"
+    	        android:src="@drawable/play2" />
+
+    	    <ImageButton
+    	        android:id="@+id/nextsong"
+    	        android:layout_width="wrap_content"
+    	        android:layout_height="wrap_content"
+    	        android:layout_alignBottom="@+id/ib"
+    	        android:layout_alignParentLeft="true"
+    	        android:layout_marginLeft="116dp"
+    	        android:layout_marginTop="16dp"
+    	        android:background="#00000000"
+    	        android:src="@drawable/next2" />
+    	    
+    	    <ImageButton
+    	        android:id="@+id/pause"
+    	        android:layout_width="wrap_content"
+    	        android:layout_height="wrap_content"
+    	        android:layout_alignBottom="@+id/ib"
+    	        android:layout_alignParentLeft="true"
+    	        android:layout_marginLeft="58dp"
+    	        android:layout_marginTop="16dp"
+    	        android:background="#00000000"
+    	        android:src="@drawable/pause" />
+    	</RelativeLayout>
+
+	</ViewFlipper>
+</LinearLayout>
