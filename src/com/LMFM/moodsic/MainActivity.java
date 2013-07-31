@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 	Boolean playing = false;
 	ArrayList<String> AttList= new ArrayList();
 	int att;
+
 	//ViewFlipper mViewFlipper;
 	
 	
@@ -49,6 +50,9 @@ public class MainActivity extends Activity {
         button1.setEnabled(true);
         final MediaPlayer mediaPlayer1 = MediaPlayer.create(MainActivity.this, R.raw.seagull);
 
+        LineChartView lineChart = (LineChartView) findViewById(R.id.linechart);
+        lineChart.setChartData(getRandomData());
+        
         button1.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -76,7 +80,7 @@ public class MainActivity extends Activity {
       //  button1.getBackground().setColorFilter(0xFF00FF00,android.graphics.PorterDuff.Mode.MULTIPLY);
 	
         final Button button2 = (Button)findViewById(R.id.button2);
-        button2.setEnabled(false);
+        //button2.setEnabled(false);
         final ViewFlipper mViewFlipper = (ViewFlipper) findViewById(R.id.details); 
         button2.setOnClickListener(new View.OnClickListener() {
 	
@@ -85,6 +89,7 @@ public class MainActivity extends Activity {
 				//button2.setEnabled(false);
 				mViewFlipper.showNext(); 
 				System.out.println("change");
+				
 
 				//jumpToLayoutb();
 				//setContentView(R.layout.activity_first);
@@ -97,6 +102,11 @@ public class MainActivity extends Activity {
  
 			}
 		});
+        
+
+
+        
+
         
         final ImageButton buttonPlay = (ImageButton)findViewById(R.id.play);
         buttonPlay.setOnClickListener(new View.OnClickListener(){
@@ -119,7 +129,7 @@ public class MainActivity extends Activity {
         	}
         });
         
-        
+
         
 	}
 
@@ -216,23 +226,14 @@ public class MainActivity extends Activity {
             }
         };        	
 
-    public int returnAttention(){
-
-		return att;
-    }
+        private float[] getRandomData() {
+            return new float[] { 0,0,0,0,0,0,0,0,100,100,100,29,30,21,29,30,41,60,48,40,43,35,40,41,38,38,26,14,14,11,23,29,29,47,51,48,43,24,10,13,4
+            		//11,17,24,29,20,24,30,43,63,57,64,74,63,69,66,41,40,41,35,54,61,63,60,53,50,63,63,57,57,47,37,44,44,40,69,63,57,64,41,34,34,26,34,43,53,53,50,38,41,35,35,47,27,37,37,27,35,44,30,44,54,51
+            		//66,48,47,38,43,43,40,38,26,40,40,57,70,77,74,56,48,43,40,53,56,54,69,60,56,60,48,41,47,41,40,56,51,50,43,26,29,23,21 
+            		};
+        }
     
-    public void jumpToLayoutb(){
-    	  setContentView(R.layout.activity_first);
-    	  ImageButton playsong  = (ImageButton)findViewById(R.id.play);
-    	  playsong.setOnClickListener(new Button.OnClickListener(){
-    	  
-    		  public void onClick(View v) {
-    			  
-    	  
-    	  }
-    	  });
-    }
-    
+  
     
         
 }
