@@ -22,6 +22,7 @@ import android.widget.ViewFlipper;
 
 
 
+
 import com.neurosky.thinkgear.*;
 import android.bluetooth.*;
 import android.content.Intent;
@@ -223,18 +224,19 @@ public class MainActivity extends Activity {
             			//Intent intent = new Intent(); 
             			//returnAttention();
             			//("att",);
-            			if (playing == true){
-                			//button1.setEnabled(true);
-                			//Arrays.fill(AttArray, att);
-                			AttList.add(attString);
-                			
-                   			//Method for Array
-                			//int lengthArray = AttArray.length;
-                			//int indexAtt = lengthArray;
-                			//AttArray[indexAtt] = att;
-                			//System.out.println(returnAttention());
-                			System.out.println(attString); 
-            			}
+            			//button1.setEnabled(true);
+            			//Arrays.fill(AttArray, att);
+            			AttList.add(attString);
+
+            	        LineChartView lineChart = (LineChartView) findViewById(R.id.linechart);
+            	        
+            	        lineChart.setChartData(getMindwave(AttList));
+               			//Method for Array
+            			//int lengthArray = AttArray.length;
+            			//int indexAtt = lengthArray;
+            			//AttArray[indexAtt] = att;
+            			//System.out.println(returnAttention());
+            			System.out.println(attString);
             		}
                 	break;
                 case TGDevice.MSG_MEDITATION:
@@ -262,7 +264,7 @@ public class MainActivity extends Activity {
         
         // this the function to get the data for the graph
         
-        /*public int[] getMindwave(ArrayList<String> AttList){
+        public float[] getMindwave(ArrayList<String> AttList){
         	// update instantaneous data:
         	
 			String[] mStringAtt = new String[AttList.size()];
@@ -282,8 +284,8 @@ public class MainActivity extends Activity {
         	// redraw the Plots:
         	
 
-        	return att;
-        }*/
+        	return attfloat;
+        }
         
         public void redraw(){
         	
