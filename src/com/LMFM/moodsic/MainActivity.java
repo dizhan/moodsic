@@ -22,10 +22,10 @@ import android.widget.ViewFlipper;
 
 
 
-
 import com.neurosky.thinkgear.*;
 import android.bluetooth.*;
 import android.content.Intent;
+import android.graphics.Color;
 
 public class MainActivity extends Activity {
 	
@@ -36,7 +36,11 @@ public class MainActivity extends Activity {
 	Boolean playing = false;
 	ArrayList<String> AttList= new ArrayList();
 	int att;
+	float[] attentionVale = {0,0,0,0,0,0,0,0,0,0,0,0};
 
+
+
+    
 	//ViewFlipper mViewFlipper;
 	
 	
@@ -50,6 +54,7 @@ public class MainActivity extends Activity {
         button1.setEnabled(true);
         final MediaPlayer mediaPlayer1 = MediaPlayer.create(MainActivity.this, R.raw.seagull);
 
+        // Draw the graph
         LineChartView lineChart = (LineChartView) findViewById(R.id.linechart);
         lineChart.setChartData(getRandomData());
         
@@ -103,25 +108,42 @@ public class MainActivity extends Activity {
 			}
 		});
         
-
-
-        
-
-        
         final ImageButton buttonPlay = (ImageButton)findViewById(R.id.play);
+        final ImageButton buttonNextsong = (ImageButton)findViewById(R.id.nextsong);        
+        final ImageButton buttonPause = (ImageButton)findViewById(R.id.pause);
+        buttonPause.setVisibility(View.INVISIBLE);
+ 
+        buttonPause.setOnClickListener(new View.OnClickListener(){
+        	
+        	public void onClick(View v) {
+        		buttonPlay.setEnabled(true);
+        		buttonPause.setVisibility(View.INVISIBLE);
+        		buttonPlay.setVisibility(View.VISIBLE);
+        		buttonPause.setEnabled(false);
+        		
+        		mediaPlayer1.pause();
+        		
+        	}
+        });
+        
+
         buttonPlay.setOnClickListener(new View.OnClickListener(){
         	
         	public void onClick(View v) {
         		System.out.println("playingplaying");
-				mViewFlipper.showNext(); 
+        		//mViewFlipper.showPrevious();
+        		buttonPause.setEnabled(true);
+        		buttonPlay.setVisibility(View.INVISIBLE);
+        		buttonPause.setVisibility(View.VISIBLE);
+        		
 
-        		button1.setEnabled(false);
         		mediaPlayer1.start();
         		playing = true;
+        		buttonPlay.setEnabled(false);
         	}
         });
         
-        final ImageButton buttonNextsong = (ImageButton)findViewById(R.id.nextsong);
+
         buttonNextsong.setOnClickListener(new View.OnClickListener(){
         	
         	public void onClick(View v) {
@@ -129,6 +151,9 @@ public class MainActivity extends Activity {
         	}
         });
         
+        // try to do the dynamic plot
+
+
 
         
 	}
@@ -191,6 +216,7 @@ public class MainActivity extends Activity {
                     break;
                 case TGDevice.MSG_ATTENTION:
             		att = msg.arg1;
+            		
             		String attString = Integer.toString(att);
             		if (att >0){
             			button2.setEnabled(true);
@@ -201,6 +227,7 @@ public class MainActivity extends Activity {
                 			//button1.setEnabled(true);
                 			//Arrays.fill(AttArray, att);
                 			AttList.add(attString);
+                			
                    			//Method for Array
                 			//int lengthArray = AttArray.length;
                 			//int indexAtt = lengthArray;
@@ -232,7 +259,35 @@ public class MainActivity extends Activity {
             		//66,48,47,38,43,43,40,38,26,40,40,57,70,77,74,56,48,43,40,53,56,54,69,60,56,60,48,41,47,41,40,56,51,50,43,26,29,23,21 
             		};
         }
-    
+        
+        // this the function to get the data for the graph
+        
+        /*public int[] getMindwave(ArrayList<String> AttList){
+        	// update instantaneous data:
+        	
+			String[] mStringAtt = new String[AttList.size()];
+			mStringAtt = AttList.toArray(mStringAtt);
+			float[] attfloat = new float[AttList.size()];
+		
+			
+			for (int i = 0; i<mStringAtt.length; i++){
+				attfloat[i] = Float.parseFloat(mStringAtt[i]);
+			}
+        	
+        	// get rid the oldest sample in history:
+        	
+
+        	// add the latest history sample:
+        	
+        	// redraw the Plots:
+        	
+
+        	return att;
+        }*/
+        
+        public void redraw(){
+        	
+        }
   
     
         

@@ -63,7 +63,7 @@
     	        android:layout_height="wrap_content"
     	        android:layout_alignBottom="@+id/ib"
     	        android:layout_alignParentLeft="true"
-    	        android:layout_marginLeft="116dp"
+    	        android:layout_marginLeft="58dp"
     	        android:layout_marginTop="16dp"
     	        android:background="#00000000"
     	        android:src="@drawable/next2" />
@@ -74,7 +74,7 @@
     	        android:layout_height="wrap_content"
     	        android:layout_alignBottom="@+id/ib"
     	        android:layout_alignParentLeft="true"
-    	        android:layout_marginLeft="58dp"
+    	        android:layout_marginLeft="0dp"
     	        android:layout_marginTop="16dp"
     	        android:background="#00000000"
     	        android:src="@drawable/pause" />
@@ -92,9 +92,7 @@
         		android:padding ="16dp"/>
 
     	    
-
-    	    
-
+    	  
     		</RelativeLayout>
 
 	</ViewFlipper>

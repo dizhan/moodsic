@@ -129,5 +129,10 @@ public class LineChartView extends View {
 
         return value;
     }
+    
+    private float removefirst(float value){
+    	
+    	return value;
+    }
 
 }
